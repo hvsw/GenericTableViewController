@@ -9,5 +9,5 @@
 import Foundation
 
 protocol TableViewCellPresentable {
-    var cellReuseId: String { get }
+    var cellType: TableViewCellDisplayable.Type { get }
 }

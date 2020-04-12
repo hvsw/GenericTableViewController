@@ -8,22 +8,17 @@
 
 import UIKit.UITableViewCell
 
-final class MyCustomCell: UITableViewCell {
+final class MyCustomCell: UITableViewCell, TableViewCellDisplayable {
     @IBOutlet weak var myLabel: UILabel?
-}
-
-// MARK: - MyCustomCellPresenterProtocol
-protocol MyCustomCellPresenterProtocol: TableViewCellPresentable {
-    var title: String { get }
 }
 
 // MARK: - TableViewCellUpdatable
 extension MyCustomCell: TableViewCellUpdatable {
     func updateViews(_ presenter: TableViewCellPresentable) {
-        guard let customPresenter = presenter as? MyCustomCellPresenterProtocol else {
+        guard let customPresenter = presenter as? NameCellPresenterProtocol else {
             return
         }
         
-        self.myLabel?.text = customPresenter.title
+        self.myLabel?.text = customPresenter.name
     }
 }

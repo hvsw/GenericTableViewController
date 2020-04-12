@@ -8,20 +8,48 @@
 
 import UIKit
 
-protocol TableViewReusableItemDisplayable {
+protocol ReusableItem: NameDescribable {
     static var reuseId: String { get }
+}
+
+extension ReusableItem {
+    static var reuseId: String {
+        Self.typeName
+    }
+}
+
+protocol TableViewReusableItemDisplayable: NameDescribable {
     static var nibName: String { get }
     static var bundle: Bundle? { get }
     static func nib() -> UINib?
     static func register(in tableView: UITableView)
 }
 
-extension TableViewReusableItemDisplayable {
-    static func nib() -> UINib? {
-        return UINib(nibName: Self.nibName, bundle: Self.bundle)
-    }
-    
-    static var bundle: Bundle? {
-        return nil
-    }
-}
+extension UITableViewCell: NameDescribable { }
+
+//extension TableViewReusableItemDisplayable where Self: UITableViewCell  {
+//    static var nibName: String {
+//        return Self.typeName
+//    }
+//
+//    static func nib() -> UINib? {
+//        return UINib(nibName: Self.nibName, bundle: Self.bundle)
+//    }
+//
+//    static var bundle: Bundle? {
+//        return nil
+//    }
+//
+//    static func register(in tableView: UITableView) {
+//        if let nib = Self.nib() {
+//            tableView.register(nib,
+//                               forCellReuseIdentifier: Self.reuseId)
+//        } else {
+//            tableView.register(Self.self,
+//                               forCellReuseIdentifier: Self.reuseId)
+//        }
+//
+//        let nib = Self.nib() ?? Self.self
+//        tableView.register(nib, forCellReuseIdentifier: Self.reuseId)
+//    }
+//}
