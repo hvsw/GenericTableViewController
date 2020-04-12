@@ -121,13 +121,16 @@ iOSInjectionProject/
 
 ## Xcode Patch
 *.xcodeproj/*
-!*.xcodeproj/project.xcworkspace
+!*.xcodeproj/project.xcworkspace/
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
+*.xcuserdatad
 
 ### Xcode Patch ###
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.gitignore.io/api/macos,xcode,swift
+
+# TableView.xcodeproj/project.xcworkspace/xcuserdata/valcanaia.xcuserdatad/UserInterfaceState.xcuserstate
