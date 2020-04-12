@@ -39,49 +39,36 @@ struct TableViewSection: TableViewSectionPresentable {
     var footer: String?
 }
 
-protocol ViewUseCaseDataProtocol {
-    var someText: String { get }
-}
-
-protocol ViewUseCaseProtocol {
-    var data: [ViewUseCaseDataProtocol] { get }
-}
-
-extension String: ViewUseCaseDataProtocol {
-    var someText: String {
-        return self
-    }
-}
-
-final class ViewUseCase: ViewUseCaseProtocol {
-    var data: [ViewUseCaseDataProtocol] = {
-        return [
-            "Random Names",
-            "Shanice Leigh",
-            "Delia Thorne",
-            "Winston Bob",
-            "Riyad Pope",
-            "Abbie Fields",
-            "Brian Roy",
-            "Ashleigh Molloy",
-            "Mercy Mora",
-            "Micheal Mcgowan",
-            "Emrys Marquez",
-        ]
-    }()
+protocol ViewPresenterProtocol: TableViewPresenterProtocol {
+    var numberOfSections: Int { get }
+    func viewDidLoad()
+    func numberOfRows(in section: Int) -> Int
+    func titleForSection(_ section: Int) -> String?
+    func didSelect(_ displayObject: TableViewCellPresentable)
 }
 
 final class ViewPresenter {
+    private var view: ViewProtocol?
     private var useCase: ViewUseCaseProtocol?
-    private var data: [TableViewSectionPresentable] = []
+    private var data: [TableViewSectionPresentable] = [] {
+        didSet {
+            self.view?.display(self.data)
+        }
+    }
     
-    init() {
+    init(view: ViewProtocol) {
+        self.view = view
         self.useCase = ViewUseCase()
         self.data = []
     }
 }
 
+// MARK: - ViewPresenterProtocol
 extension ViewPresenter: ViewPresenterProtocol {
+    func didSelect(_ displayObject: TableViewCellPresentable) {
+        print(displayObject)
+    }
+    
     func titleForSection(_ section: Int) -> String? {
         return self.data[section].title
     }
@@ -109,21 +96,29 @@ extension ViewPresenter: ViewPresenterProtocol {
         ///       Would be interesting to have a very generic adapter, something like:
         ///       `let outData = Adapter<In, Out>.adapt(inData)` or
         ///       `let outData = self.data.map { MyAdapter.adapt(inData) }`
-        self.data = useCase.data
-            .map { (data: ViewUseCaseDataProtocol) -> MyCustomCellPresenterProtocol in
-                return MyCustomCellPresenter(title: data.someText)
-        }
-        .group { (myCustomCellPresenterProtocol: MyCustomCellPresenterProtocol) -> String in
-            guard let firstLetter = myCustomCellPresenterProtocol.title.first else {
-                return ""
+        
+        self.view?.set(loading: true)
+        useCase.fetchList { (list: [ViewUseCaseDataProtocol]) in
+            self.view?.set(loading: false)
+            
+            let listViewData = list
+                .map { (data: ViewUseCaseDataProtocol) -> MyCustomCellPresenterProtocol in
+                    return MyCustomCellPresenter(title: data.someText)
+            }
+            .group { (myCustomCellPresenterProtocol: MyCustomCellPresenterProtocol) -> String in
+                guard let firstLetter = myCustomCellPresenterProtocol.title.first else {
+                    return ""
+                }
+                
+                return String(firstLetter)
+            }
+            .map { (tuple: (key: String, value: [MyCustomCellPresenterProtocol])) -> TableViewSectionPresentable in
+                return TableViewSection(title: tuple.key,
+                                        rows: tuple.value,
+                                        footer: "Some footer text for key(\(tuple.key))")
             }
             
-            return String(firstLetter)
-        }
-        .map { (tuple: (key: String, value: [MyCustomCellPresenterProtocol])) -> TableViewSectionPresentable in
-            return TableViewSection(title: tuple.key,
-                                    rows: tuple.value,
-                                    footer: "Some footer text for key(\(tuple.key))")
+            self.view?.display(listViewData)
         }
     }
     
@@ -131,5 +126,4 @@ extension ViewPresenter: ViewPresenterProtocol {
     func cellPresenter(at indexPath: IndexPath) -> TableViewCellPresentable {
         return self.data[at: indexPath]
     }
-    
 }
