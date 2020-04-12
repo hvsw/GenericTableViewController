@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol ViewProtocol {
+protocol ListViewProtocol {
     func display(_ listViewData: [TableViewSectionPresentable])
     func set(loading: Bool)
 }
 
-protocol ViewModel {
+protocol ListViewModel {
     /// TODO: Make this generic to work with whatever "logic row type"
     /// (in this case we're treating a section as an item).
     ///
@@ -23,14 +23,14 @@ protocol ViewModel {
     var items: [TableViewSectionPresentable] { get }
 }
 
-final class ViewController: UIViewController {
+final class ListViewController: UIViewController {
     // MARK: - Public
     @IBOutlet private weak var tableView: UITableView!
     
     // MARK: - Private
     private var listDataSource: ListDataSourceProtocol?
     private lazy var presenter: ViewPresenterProtocol? = {
-        return ViewPresenter(view: self)
+        return ListViewPresenter(view: self)
     }()
     
     // MARK: - Override
@@ -51,7 +51,7 @@ final class ViewController: UIViewController {
 }
 
 // MARK: - ViewProtocol
-extension ViewController: ViewProtocol {
+extension ListViewController: ListViewProtocol {
     func display(_ listViewData: [TableViewSectionPresentable]) {
         self.listDataSource?.bind(to: listViewData)
     }
@@ -62,7 +62,7 @@ extension ViewController: ViewProtocol {
 }
 
 // MARK: - UITableViewDelegate
-extension ViewController: UITableViewDelegate {
+extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let listDataSource = self.listDataSource else {
             fatalError("How did you get here without a data source?")

@@ -1,5 +1,5 @@
 //
-//  ViewUseCase.swift
+//  ListViewUseCase.swift
 //  TableView
 //
 //  Created by Henrique Valcanaia on 2020-04-12.
@@ -12,7 +12,7 @@ protocol ViewUseCaseDataProtocol {
     var someText: String { get }
 }
 
-protocol ViewUseCaseProtocol {
+protocol ListViewUseCaseProtocol {
     var data: [ViewUseCaseDataProtocol] { get }
     func fetchList(block: ([ViewUseCaseDataProtocol])->())
 }
@@ -23,7 +23,8 @@ extension String: ViewUseCaseDataProtocol {
     }
 }
 
-final class ViewUseCase: ViewUseCaseProtocol {
+final class ListViewUseCase: ListViewUseCaseProtocol {
+    // MARK - ListViewUseCaseProtocol
     func fetchList(block: ([ViewUseCaseDataProtocol]) -> ()) {
         block(self.data)
     }

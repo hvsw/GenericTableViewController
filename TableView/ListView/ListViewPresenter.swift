@@ -1,5 +1,5 @@
 //
-//  ViewPresenter.swift
+//  ListViewPresenter.swift
 //  TableView
 //
 //  Created by Henrique Valcanaia on 2020-04-12.
@@ -47,24 +47,24 @@ protocol ViewPresenterProtocol: TableViewPresenterProtocol {
     func didSelect(_ displayObject: TableViewCellPresentable)
 }
 
-final class ViewPresenter {
-    private var view: ViewProtocol?
-    private var useCase: ViewUseCaseProtocol?
+final class ListViewPresenter {
+    private var view: ListViewProtocol?
+    private var useCase: ListViewUseCaseProtocol?
     private var data: [TableViewSectionPresentable] = [] {
         didSet {
             self.view?.display(self.data)
         }
     }
     
-    init(view: ViewProtocol) {
+    init(view: ListViewProtocol) {
         self.view = view
-        self.useCase = ViewUseCase()
+        self.useCase = ListViewUseCase()
         self.data = []
     }
 }
 
 // MARK: - ViewPresenterProtocol
-extension ViewPresenter: ViewPresenterProtocol {
+extension ListViewPresenter: ViewPresenterProtocol {
     func didSelect(_ displayObject: TableViewCellPresentable) {
         print(displayObject)
     }
