@@ -17,6 +17,7 @@ protocol ListViewUseCaseProtocol {
     func fetchList(block: ([ViewUseCaseDataProtocol])->())
 }
 
+// MARK: - "Data"
 extension String: ViewUseCaseDataProtocol {
     var someText: String {
         return self

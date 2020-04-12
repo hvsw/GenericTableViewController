@@ -28,23 +28,6 @@ protocol Adaptable {
 //    }
 //}
 
-
-// MARK: - MyCustomCellPresenterProtocol
-protocol MyCustomCellPresenterProtocol: TableViewCellPresentable {
-    var title: String { get }
-}
-
-struct MyCustomCellPresenter: MyCustomCellPresenterProtocol {
-    var cellType: TableViewCellDisplayable.Type = MyCustomCell.self
-    var title: String
-}
-
-struct TableViewSection: TableViewSectionPresentable {
-    var title: String?
-    var rows: [TableViewCellPresentable]
-    var footer: String?
-}
-
 protocol ListViewPresenterProtocol: TableViewPresenterProtocol {
     var numberOfSections: Int { get }
     func viewDidLoad()
