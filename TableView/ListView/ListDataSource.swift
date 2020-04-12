@@ -21,6 +21,8 @@ protocol ListDataSourceProtocol: UITableViewDataSource {
 }
 
 // MARK: -
+/// TODO: Should this be called something like `ListRowViewModelDataSource`?
+/// Is this supposed to behave like a "list view rows view data source"?
 final class ListDataSource: NSObject, ListDataSourceProtocol {
     private weak var tableView: UITableView!
     private var displayingData: [TableViewSectionPresentable] = []
