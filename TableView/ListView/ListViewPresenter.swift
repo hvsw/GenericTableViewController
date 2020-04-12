@@ -45,7 +45,7 @@ struct TableViewSection: TableViewSectionPresentable {
     var footer: String?
 }
 
-protocol ViewPresenterProtocol: TableViewPresenterProtocol {
+protocol ListViewPresenterProtocol: TableViewPresenterProtocol {
     var numberOfSections: Int { get }
     func viewDidLoad()
     func numberOfRows(in section: Int) -> Int
@@ -70,7 +70,7 @@ final class ListViewPresenter {
 }
 
 // MARK: - ViewPresenterProtocol
-extension ListViewPresenter: ViewPresenterProtocol {
+extension ListViewPresenter: ListViewPresenterProtocol {
     func didSelect(_ displayObject: TableViewCellPresentable) {
         print(displayObject)
     }

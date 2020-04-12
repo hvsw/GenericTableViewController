@@ -29,7 +29,7 @@ final class ListViewController: UIViewController {
     
     // MARK: - Private
     private var listDataSource: ListDataSourceProtocol?
-    private lazy var presenter: ViewPresenterProtocol? = {
+    private lazy var presenter: ListViewPresenterProtocol? = {
         return ListViewPresenter(view: self)
     }()
     
