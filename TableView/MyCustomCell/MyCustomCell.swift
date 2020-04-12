@@ -15,10 +15,10 @@ final class MyCustomCell: UITableViewCell, TableViewCellDisplayable {
 // MARK: - TableViewCellUpdatable
 extension MyCustomCell: TableViewCellUpdatable {
     func updateViews(_ presenter: TableViewCellPresentable) {
-        guard let customPresenter = presenter as? MyCustomCellPresenterProtocol else {
+        guard let customPresenter = presenter as? NameCellPresenterProtocol else {
             return
         }
         
-        self.myLabel?.text = customPresenter.title
+        self.myLabel?.text = customPresenter.name
     }
 }

@@ -46,6 +46,7 @@ final class ListViewController: UIViewController {
         // TODO: Inject the cells we want to use and find a way to bind the cell to its CellViewModel
         
         MyCustomCell.register(in: self.tableView)
+        AnotherCustomCell.register(in: self.tableView)
         
         self.listDataSource = ListDataSource(tableView: self.tableView,
                                              configureCell: self.setupCell(listDataSource:tableView:indexPath:))

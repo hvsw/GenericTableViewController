@@ -9,11 +9,16 @@
 import Foundation
 
 // MARK: - MyCustomCellPresenterProtocol
-protocol MyCustomCellPresenterProtocol: TableViewCellPresentable {
-    var title: String { get }
+protocol MyCustomCellPresenterProtocol: NameCellPresenterProtocol {
+    var name: String { get }
 }
 
 struct MyCustomCellPresenter: MyCustomCellPresenterProtocol {
-    var cellType: TableViewCellDisplayable.Type = MyCustomCell.self
-    var title: String
+    var name: String
+}
+
+extension MyCustomCellPresenter: TableViewCellPresentable {
+    var cellType: TableViewCellDisplayable.Type {
+        return MyCustomCell.self
+    }
 }

@@ -91,15 +91,22 @@ extension ListViewPresenter: ListViewPresenterProtocol {
             self.view?.set(loading: false)
             
             let listViewData = list
-                .map { (data: ViewUseCaseDataProtocol) -> MyCustomCellPresenterProtocol in
-                    return MyCustomCellPresenter(title: data.someText)
+                .map { (data: ViewUseCaseDataProtocol) -> NameCellPresenterProtocol in
+                    /// TODO: Here we can use custom logic to have different
+                    ///       presenters. Should we rely on the presenters or
+                    ///       the view?
+                    if Int.random(in: 0...1) == 0 {
+                        return MyCustomCellPresenter(name: data.someText)
+                    } else {
+                        return AnotherCellPresenter(name: data.someText)
+                    }
             }
-            .group { (myCustomCellPresenterProtocol: MyCustomCellPresenterProtocol) -> String in
-                guard let firstLetter = myCustomCellPresenterProtocol.title.first else {
+            .group { (myCustomCellPresenterProtocol: NameCellPresenterProtocol) -> String in
+                guard let nameFirstLetter = myCustomCellPresenterProtocol.name.first else {
                     return ""
                 }
                 
-                return String(firstLetter)
+                return String(nameFirstLetter)
             }
             .map { (tuple: (key: String, value: [TableViewCellPresentable])) -> TableViewSectionPresentable in
                 return TableViewSection(title: tuple.key,

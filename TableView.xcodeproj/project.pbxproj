@@ -10,6 +10,9 @@
 		62044F612443BBA100A0C6D8 /* NameDescribable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62044F602443BBA100A0C6D8 /* NameDescribable.swift */; };
 		62044F632443C6F300A0C6D8 /* TableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62044F622443C6F300A0C6D8 /* TableViewSection.swift */; };
 		62044F652443C72700A0C6D8 /* MyCustomCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62044F642443C72700A0C6D8 /* MyCustomCellPresenter.swift */; };
+		62044F682443C86C00A0C6D8 /* AnotherCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62044F672443C86C00A0C6D8 /* AnotherCustomCell.xib */; };
+		62044F6A2443C89300A0C6D8 /* AnotherCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62044F692443C89300A0C6D8 /* AnotherCustomCell.swift */; };
+		62044F6C2443CFA900A0C6D8 /* NamePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62044F6B2443CFA900A0C6D8 /* NamePresenterProtocol.swift */; };
 		6243D504244348F2006A2055 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6243D503244348F2006A2055 /* AppDelegate.swift */; };
 		6243D506244348F2006A2055 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6243D505244348F2006A2055 /* SceneDelegate.swift */; };
 		6243D508244348F2006A2055 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6243D507244348F2006A2055 /* ListViewController.swift */; };
@@ -36,6 +39,9 @@
 		62044F602443BBA100A0C6D8 /* NameDescribable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameDescribable.swift; sourceTree = "<group>"; };
 		62044F622443C6F300A0C6D8 /* TableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSection.swift; sourceTree = "<group>"; };
 		62044F642443C72700A0C6D8 /* MyCustomCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomCellPresenter.swift; sourceTree = "<group>"; };
+		62044F672443C86C00A0C6D8 /* AnotherCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnotherCustomCell.xib; sourceTree = "<group>"; };
+		62044F692443C89300A0C6D8 /* AnotherCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherCustomCell.swift; sourceTree = "<group>"; };
+		62044F6B2443CFA900A0C6D8 /* NamePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamePresenterProtocol.swift; sourceTree = "<group>"; };
 		6243D500244348F2006A2055 /* TableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6243D503244348F2006A2055 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6243D505244348F2006A2055 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		62044F662443C85800A0C6D8 /* AnotherCustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				62044F672443C86C00A0C6D8 /* AnotherCustomCell.xib */,
+				62044F692443C89300A0C6D8 /* AnotherCustomCell.swift */,
+			);
+			path = AnotherCustomCell;
+			sourceTree = "<group>";
+		};
 		6243D4F7244348F2006A2055 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +106,7 @@
 		6243D502244348F2006A2055 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				62044F662443C85800A0C6D8 /* AnotherCustomCell */,
 				625B85E82443AA65000C98A0 /* Bootstrap */,
 				625B85E92443AA6F000C98A0 /* ListView */,
 				6243D51D24435001006A2055 /* MyCustomCell */,
@@ -106,6 +122,7 @@
 				6243D51724434C16006A2055 /* MyCustomCell.xib */,
 				6243D51924434C60006A2055 /* MyCustomCell.swift */,
 				62044F642443C72700A0C6D8 /* MyCustomCellPresenter.swift */,
+				62044F6B2443CFA900A0C6D8 /* NamePresenterProtocol.swift */,
 			);
 			path = MyCustomCell;
 			sourceTree = "<group>";
@@ -224,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62044F682443C86C00A0C6D8 /* AnotherCustomCell.xib in Resources */,
 				6243D510244348F3006A2055 /* LaunchScreen.storyboard in Resources */,
 				6243D50D244348F3006A2055 /* Assets.xcassets in Resources */,
 				6243D51824434C16006A2055 /* MyCustomCell.xib in Resources */,
@@ -240,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6243D508244348F2006A2055 /* ListViewController.swift in Sources */,
+				62044F6A2443C89300A0C6D8 /* AnotherCustomCell.swift in Sources */,
 				62044F612443BBA100A0C6D8 /* NameDescribable.swift in Sources */,
 				6243D53424436856006A2055 /* Sequece+Grouping.swift in Sources */,
 				6243D52724435EB4006A2055 /* TableViewCellPresentable.swift in Sources */,
@@ -255,6 +274,7 @@
 				62044F652443C72700A0C6D8 /* MyCustomCellPresenter.swift in Sources */,
 				6243D51C24434E83006A2055 /* ListViewPresenter.swift in Sources */,
 				6243D5322443681E006A2055 /* Array+TableViewSectionPresentable.swift in Sources */,
+				62044F6C2443CFA900A0C6D8 /* NamePresenterProtocol.swift in Sources */,
 				6243D52D24435F70006A2055 /* TableViewReusableItemDisplayable.swift in Sources */,
 				6243D52524435E5C006A2055 /* TableViewSectionPresentable.swift in Sources */,
 			);
