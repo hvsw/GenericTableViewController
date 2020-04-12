@@ -101,7 +101,7 @@ extension ListViewPresenter: ListViewPresenterProtocol {
                 
                 return String(firstLetter)
             }
-            .map { (tuple: (key: String, value: [MyCustomCellPresenterProtocol])) -> TableViewSectionPresentable in
+            .map { (tuple: (key: String, value: [TableViewCellPresentable])) -> TableViewSectionPresentable in
                 return TableViewSection(title: tuple.key,
                                         rows: tuple.value,
                                         footer: "Some footer text for key(\(tuple.key))")
