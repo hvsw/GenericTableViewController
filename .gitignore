@@ -48,7 +48,7 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-xcuserdata/
+xcuserdata/*
 
 ## Other
 *.moved-aside
@@ -121,6 +121,7 @@ iOSInjectionProject/
 
 ## Xcode Patch
 *.xcodeproj/*
+!*.xcodeproj/project.xcworkspace
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
