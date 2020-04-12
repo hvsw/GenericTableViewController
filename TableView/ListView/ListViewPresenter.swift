@@ -28,8 +28,14 @@ protocol Adaptable {
 //    }
 //}
 
+
+// MARK: - MyCustomCellPresenterProtocol
+protocol MyCustomCellPresenterProtocol: TableViewCellPresentable {
+    var title: String { get }
+}
+
 struct MyCustomCellPresenter: MyCustomCellPresenterProtocol {
-    var cellReuseId: String = "MyCustomCell"
+    var cellType: TableViewCellDisplayable.Type = MyCustomCell.self
     var title: String
 }
 

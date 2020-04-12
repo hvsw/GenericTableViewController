@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62044F612443BBA100A0C6D8 /* NameDescribable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62044F602443BBA100A0C6D8 /* NameDescribable.swift */; };
 		6243D504244348F2006A2055 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6243D503244348F2006A2055 /* AppDelegate.swift */; };
 		6243D506244348F2006A2055 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6243D505244348F2006A2055 /* SceneDelegate.swift */; };
 		6243D508244348F2006A2055 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6243D507244348F2006A2055 /* ListViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		62044F602443BBA100A0C6D8 /* NameDescribable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameDescribable.swift; sourceTree = "<group>"; };
 		6243D500244348F2006A2055 /* TableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6243D503244348F2006A2055 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6243D505244348F2006A2055 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,7 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				6243D53024435FF9006A2055 /* Extensions */,
-				625B85E42443A425000C98A0 /* ListDataSource.swift */,
+				62044F602443BBA100A0C6D8 /* NameDescribable.swift */,
 				6243D52624435EB4006A2055 /* TableViewCellPresentable.swift */,
 				6243D52824435ED1006A2055 /* TableViewCellUpdatable.swift */,
 				6243D52A24435EEA006A2055 /* TableViewPresenterProtocol.swift */,
@@ -153,6 +155,7 @@
 				6243D507244348F2006A2055 /* ListViewController.swift */,
 				6243D51B24434E83006A2055 /* ListViewPresenter.swift */,
 				625B85E62443A773000C98A0 /* ListViewUseCase.swift */,
+				625B85E42443A425000C98A0 /* ListDataSource.swift */,
 			);
 			path = ListView;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6243D508244348F2006A2055 /* ListViewController.swift in Sources */,
+				62044F612443BBA100A0C6D8 /* NameDescribable.swift in Sources */,
 				6243D53424436856006A2055 /* Sequece+Grouping.swift in Sources */,
 				6243D52724435EB4006A2055 /* TableViewCellPresentable.swift in Sources */,
 				6243D504244348F2006A2055 /* AppDelegate.swift in Sources */,

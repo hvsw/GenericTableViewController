@@ -8,13 +8,8 @@
 
 import UIKit.UITableViewCell
 
-final class MyCustomCell: UITableViewCell {
+final class MyCustomCell: UITableViewCell, TableViewCellDisplayable {
     @IBOutlet weak var myLabel: UILabel?
-}
-
-// MARK: - MyCustomCellPresenterProtocol
-protocol MyCustomCellPresenterProtocol: TableViewCellPresentable {
-    var title: String { get }
 }
 
 // MARK: - TableViewCellUpdatable

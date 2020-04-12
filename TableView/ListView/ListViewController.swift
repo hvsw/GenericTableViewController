@@ -41,22 +41,36 @@ final class ListViewController: UIViewController {
         self.presenter?.viewDidLoad()
     }
     
+    // MARK: Private helpers
     private func setupTableView() {
         // TODO: Inject the cells we want to use and find a way to bind the cell to its CellViewModel
+        
         MyCustomCell.register(in: self.tableView)
         
-        self.listDataSource = ListDataSource(tableView: self.tableView) { listDataSource, tableView, indexPath in
-            let reuseIdentifier = "MyCustomCell"
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? (UITableViewCell&TableViewCellUpdatable) else {
-                return UITableViewCell()
-            }
-            
-            let displayObject = listDataSource.displayObject(at: indexPath)
-            cell.updateViews(displayObject)
-            return cell
-        }
+        self.listDataSource = ListDataSource(tableView: self.tableView,
+                                             configureCell: self.setupCell(listDataSource:tableView:indexPath:))
         self.tableView.dataSource = self.listDataSource
         self.tableView.delegate = self
+    }
+    
+    private func setupCell(
+        listDataSource: ListDataSourceProtocol,
+        tableView: UITableView,
+        indexPath: IndexPath
+    ) -> (UITableViewCell&TableViewCellUpdatable) {
+        let displayObject = listDataSource.displayObject(at: indexPath)
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: displayObject.cellType.nibName,
+                                                       for: indexPath) as? (UITableViewCell&TableViewCellUpdatable) else {
+            fatalError("Return expression of type 'UITableViewCell' does not conform to 'TableViewCellUpdatable'")
+            /// Indeed, it doesn't conform, but how we used in some other places????? :thinkiessss:
+            /// `return UITableViewCell()`
+        }
+        
+        
+        cell.updateViews(displayObject)
+        
+        return cell
     }
 }
 
