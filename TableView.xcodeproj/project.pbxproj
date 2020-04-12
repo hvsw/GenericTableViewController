@@ -86,6 +86,16 @@
 			path = AnotherCustomCell;
 			sourceTree = "<group>";
 		};
+		62044F6D2443D23C00A0C6D8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				62044F662443C85800A0C6D8 /* AnotherCustomCell */,
+				6243D51D24435001006A2055 /* MyCustomCell */,
+				62044F6B2443CFA900A0C6D8 /* NamePresenterProtocol.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		6243D4F7244348F2006A2055 = {
 			isa = PBXGroup;
 			children = (
@@ -106,10 +116,9 @@
 		6243D502244348F2006A2055 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				62044F662443C85800A0C6D8 /* AnotherCustomCell */,
+				62044F6D2443D23C00A0C6D8 /* Cells */,
 				625B85E82443AA65000C98A0 /* Bootstrap */,
 				625B85E92443AA6F000C98A0 /* ListView */,
-				6243D51D24435001006A2055 /* MyCustomCell */,
 				6243D52324435E53006A2055 /* Protocols */,
 				6243D51E24435019006A2055 /* Resources */,
 			);
@@ -122,7 +131,6 @@
 				6243D51724434C16006A2055 /* MyCustomCell.xib */,
 				6243D51924434C60006A2055 /* MyCustomCell.swift */,
 				62044F642443C72700A0C6D8 /* MyCustomCellPresenter.swift */,
-				62044F6B2443CFA900A0C6D8 /* NamePresenterProtocol.swift */,
 			);
 			path = MyCustomCell;
 			sourceTree = "<group>";
