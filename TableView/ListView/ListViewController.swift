@@ -44,7 +44,17 @@ final class ListViewController: UIViewController {
     private func setupTableView() {
         // TODO: Inject the cells we want to use and find a way to bind the cell to its CellViewModel
         MyCustomCell.register(in: self.tableView)
-        self.listDataSource = ListDataSource(tableView: self.tableView)
+        
+        self.listDataSource = ListDataSource(tableView: self.tableView) { listDataSource, tableView, indexPath in
+            let reuseIdentifier = "MyCustomCell"
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? (UITableViewCell&TableViewCellUpdatable) else {
+                return UITableViewCell()
+            }
+            
+            let displayObject = listDataSource.displayObject(at: indexPath)
+            cell.updateViews(displayObject)
+            return cell
+        }
         self.tableView.dataSource = self.listDataSource
         self.tableView.delegate = self
     }
@@ -57,7 +67,7 @@ extension ListViewController: ListViewProtocol {
     }
     
     func set(loading: Bool) {
-        print(loading)
+        print("Loading: \(loading)")
     }
 }
 
